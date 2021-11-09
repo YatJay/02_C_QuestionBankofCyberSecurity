@@ -1,0 +1,14 @@
+从键盘输入一个正方体的边长（整型），计算该正方体的体积和表面积。
+　　程序的运行效果应类似地如图1所示，图1中的5是从键盘输入的内容。
+
+#include <stdio.h>
+
+int main(void)
+{
+	int side;
+
+	printf("Input a side of cube: ");
+	scanf("%d", &side);
+	printf("Output:\nThe volume of cube is %d, the surface area of cube is %d.\n", side * side * side, 6 * side * side);
+	return 0;
+}

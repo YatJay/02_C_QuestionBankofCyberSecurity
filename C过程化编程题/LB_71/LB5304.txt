@@ -1,0 +1,56 @@
+程序的功能是：从键盘输入一个整数n(n≥0)和x，计算对应的n阶勒让德多项式Pn(x)的值，并按示例格式输出相应信息。n阶勒让德多项式Pn(x)的定义如下：
+　　　　 　　　┌　1                                  (n=0)
+　　　　Pn(x)=    ├　x                                  (n=1)
+　　　　 　　　 └((2n-1)xPn-1(x) - (n-1)Pn-2(x)) / n      (n>1)
+　　程序的运行效果应类似地如图1所示，图1中的：10, 2是从键盘输入的内容。
+
+#include <stdio.h>
+
+/* 本部分代码功能建议：调用相应的函数计算S */
+/******start******/
+double fun(int n,int x);
+/******end******/
+/* 考生添加代码结束 */
+
+int main(void)
+{
+	double Pnx;
+	int n, x;
+ 
+	printf("please input n, x: ");
+	scanf("%d,%d", &n, &x);
+
+	/* 本部分代码功能建议：调用相应的函数计算S */
+        /******start******/
+
+	Pnx = fun(n,x);
+	/******end******/
+         /* 考生添加代码结束 */
+
+	printf("Output:\nThe answer is %.6f.\n", Pnx);
+	return 0;
+}
+
+/******start******/
+	double fun(int n,int x)
+{
+     double sum;
+	 if(n==0)
+	 {
+		 sum=1;
+	 }
+     else if(n==1)
+	 {
+		 sum=x;
+	 }
+     else 
+	 {
+	 
+	 sum = ((2*n-1)*x*fun(n-1,x) - (n-1)*fun(n-2,x)) / n;
+
+	 }
+     return sum;
+
+
+}
+/******end******/

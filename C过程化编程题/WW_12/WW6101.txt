@@ -1,0 +1,21 @@
+通过键盘输入两整型变量a和b的值，然后再定义量指针变量pointer_1和pointer_2，分别指向整型变量a和b，
+
+然后在屏幕输出pointer_1和pointer_2所指向的整型变量的值。注意：只能在/******start******/和/******end******/之间添加代码。
+
+运行界面如下：
+
+#include <stdio.h>
+int main()
+{ 
+  /******start******/
+
+int a,b,*pointer_1,*pointer_2;
+scanf("%d,%d",&a,&b);
+pointer_1=&a;
+pointer_2=&b;
+
+  /******end******/
+  printf("Output:\n");
+  printf("*pointer_1=%d,*pointer_2=%d\n",*pointer_1,*pointer_2);    
+  return 0;
+}

@@ -1,0 +1,45 @@
+建立具有三个结点的简单链表。注意：只允许在/******start******/和/******end******/之间添加代码。
+其中：
+1 2 3
+
+是键盘输入的。
+
+#include <stdio.h>
+#include <stdlib.h>
+
+struct node
+{
+	int data;
+	struct node *next;
+};
+
+void output(struct node *head);
+
+int main()
+{
+	struct node a, b, c;
+	struct node *head;
+
+	printf("Input:\n");
+	/******start******/
+ scanf("%d %d %d",&a.data,&b.data,&c.data);
+	 head=&a;
+	 a.next=&b;
+	 b.next=&c;
+	 c.next=NULL;
+
+	/******end******/
+	printf("Output:\n");
+	output(head);
+	return 0;
+}
+
+void output(struct node *head)
+{
+	while (head != NULL)
+	{
+		printf("%d ", head->data);
+		head = head->next;
+	}
+	printf("\n");
+}

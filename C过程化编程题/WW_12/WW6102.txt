@@ -1,0 +1,28 @@
+通过键盘输入两整型变量a和b，然后定义俩指针变量p1和p2指向整型变量a和b，
+
+然后a和b之间相互比较，a若小于b，则p1和p2相互交换，然后按照先大到小顺序
+
+输出p1和p2所指向的整型变量的值。注意：只允许在/******start******/和/******end******/之间添加代码。
+
+运行结果如下：
+
+#include <stdio.h>
+int main()
+ { int *p1,*p2,*p,a,b;
+   printf("please enter two integer numbers:");
+   scanf("%d,%d",&a,&b); 
+   p1=&a;
+   p2=&b;
+   /******start******/
+if(a<b)
+{
+p=p1;
+p1=p2;
+
+   /******end******/
+      p2 = p;
+   }
+   printf("Output:\na=%d,b=%d\n",a,b);
+   printf("max=%d,min=%d\n",*p1,*p2); 
+   return 0;
+}

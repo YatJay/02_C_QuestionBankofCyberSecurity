@@ -1,0 +1,34 @@
+有两个文本文件lb8103a.txt和lb8103b.txt。键盘输入需要读的文件名，然后从该文件中读出前n（<=26）个字符。
+
+图1中的lb8103a.txt和3，图2中的lb8103b.txt和8，图3中的lb8103.txt和3是从键盘输入的。
+
+#include <stdio.h>
+
+int main(void)
+{
+	int n, sum = 0, i;
+	char ch;
+	char str[20];
+	FILE *fp;
+
+	printf("Input filename:");
+	scanf("%s", str);
+	printf("Input n:");
+	scanf("%d", &n);
+
+	printf("Output:\n");
+	fp = fopen(str, "r");
+	if (fp == NULL)
+	{
+		printf("Open Error!\n");
+		return 0;
+	}
+	for (i = 0; i < n; i++)
+	{
+		ch = fgetc(fp);
+		putchar(ch);
+	}
+	fclose(fp);
+	printf("\n");
+	return 0;
+}

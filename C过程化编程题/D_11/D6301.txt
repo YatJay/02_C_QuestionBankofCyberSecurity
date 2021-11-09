@@ -1,0 +1,59 @@
+在成信，很多学生都会找兼职来赚点外快，Alfred也不例外，他找的兼职是家教。好了，现在Alfred的工作就是辅导一个高中生的数学。
+这一天，这位高中生叫Alfred帮忙做一下作业：在二维平面内给出一个三角形的三个顶点坐标，现在的任务是求出这个三角形的垂心，也就是三角形的三条高线所在直线的交点。
+当然，Alfred的数学是不错的，对于这么简单的问题，Alfred只用了半分钟就解决掉了，正当Alfred得意的时候，这位高中生却毫不吃惊地说：我们的作业一共有100条呢！Alfred听见了之后不禁倒抽了一口凉气，现在的中学生真命苦啊。所以，打抱不平的Alfred决定要帮这位高中生的忙：利用计算机程序来批量解决这个问题，但是Alfred苦思数日却没有想出来解决办法，你们能帮他这个忙吗？
+
+输入说明：第一行是一个整数C(C<=100)，表示有C组测试数组，每组数据三行，每行两个浮点数分别表示三角形某个顶点的x, y坐标。所有坐标的绝对值<10000。输入保证三点不共线。
+
+输出说明：对于每组输入数据，输出两个浮点数xh, yh表示所给三角形垂心的纵横坐标，保留三位小数（四舍五入）。
+
+程序的运行效果应类似地如图所示，图中的3、-10 0、0 10、10 0、-10 0、10 0、0 17.321、2 10、4 -5和20 6是从键盘输入内容。
+
+#include <stdio.h>
+#include <malloc.h>
+
+void f(double x[], double y[], double* x0, double* y0);
+
+int main()
+{
+	int n, i;
+	double x[3], y[3];
+	double *x0, *y0;
+
+	scanf("%d", &n);
+
+
+	x0 = (double*)malloc(n*sizeof(double));
+	y0 = (double*)malloc(n*sizeof(double));
+
+	for(i=0; i<n; i++)
+	{
+		scanf("%lf%lf", &x[0], &y[0]);
+		scanf("%lf%lf", &x[1], &y[1]);
+		scanf("%lf%lf", &x[2], &y[2]);
+		f(x, y, &x0[i], &y0[i]);
+	}
+	
+	puts("Output:");
+	for(i=0; i<n; i++)
+		printf("%.3lf %.3lf\n", x0[i], y0[i]);
+
+	free(x0);
+	free(y0);
+
+	return 0;
+}
+
+void f(double x[], double y[], double* x0, double* y0)
+{
+	double a1 = x[2]-x[1];
+	double b1 = y[2]-y[1];
+	double c1 = 0;
+	double a2 = x[2]-x[0];
+	double b2 = y[2]-y[0];
+	double c2 = (x[1]-x[0])*a2 + (y[1]-y[0])*b2;
+
+	double d = a1*b2-a2*b1;
+
+	*x0 = x[0]+(c1*b2-c2*b1)/d;
+	*y0 = y[0]+(a1*c2-a2*c1)/d;
+}

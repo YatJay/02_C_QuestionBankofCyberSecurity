@@ -1,0 +1,5 @@
+将当前目录下的jsgc01.txt文件内容读取出来并显示在屏幕上。
+
+1:  fp = fopen("jsgc01.txt", "r");
+
+2:  while (ch != EOF)

@@ -1,0 +1,9 @@
+从一个子函数中输入结构体信息并在主函数中输出。
+
+ 
+
+1:  void Input(struct aa *x);
+
+2:  Input(&y);
+
+3:  void Input(struct aa *x)

@@ -1,0 +1,50 @@
+输入n个整数，使前面的n-m个数顺序向后移动m个位置，最后的m个数变成最前面的m个数。
+
+ 
+
+输入格式 
+
+第一行包含两个用空格隔开的整数n和m，保证n>m且n不超过50，如果输入不符合以上要求，要有“Input Error！”提示。第二行包含n个用空格隔开的整数。 
+
+ 
+
+输出 
+
+输出进行题目描述操作之后的n个整数，每个整数之后输出一个空格。
+请注意行尾输出换行。 
+
+#include <stdio.h>
+int main() {
+        void update(int x[], int n, int m);
+        int a[50];
+        int n, m, i;
+		printf("Please input  n m:[n>m]\n");
+        scanf("%d %d", &n, &m);
+		if((n<=m)||(n>50))
+		
+		{
+			printf("Output:\nInput Error!\n");
+		}
+		else
+		{
+			printf("Please input %d numbers:\n",n);
+        for (i = 0;i < n;i++)
+                scanf("%d", &a[i]);
+        update(a, n, m);
+		printf("Output:\nThe new sort numbers are:\n");
+        for (i = 0;i < n;i++)
+                printf("%d ", a[i]);
+        printf("\n");
+		}
+        return 0;
+}
+void update(int x[], int n, int m) {
+        int tmp[50];
+        int i;
+        for (i = 0;i < n;i++)
+                tmp[i] = x[i];
+        for (i = n - m - 1;i >= 0;i--)
+                x[i + m] = x[i];
+        for (i = 0;i < m;i++)
+                x[i] = tmp[i + (n - m)];
+}

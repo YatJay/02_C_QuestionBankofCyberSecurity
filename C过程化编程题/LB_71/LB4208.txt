@@ -1,0 +1,42 @@
+编写一程序实现以下功能
+　　①从键盘上先后读入两个字符串，假定存储在字符数组s1和s2中。注意，这两个字符串最长均可达到127个字符、最短均可为0个字符。
+　　②将字符串s2插入字符串s1中，插入方法为:s2的第i个字符插入到原s1的第i个字符后，如果s2比s1(假定s1的长度为L1)长，则s2的第L1个字符开始到s2结尾的所有字符按在s2中的顺序放在新生成的s1后。提示，合并时可使用中间数组。例如：
+　　  s1输入为"123456789"，S2输入为"abcdefghijk"，则输出的s1为：
+　　     1a2b3c4d5e6f7g8h9ijk
+　　③在屏幕上输出新生成的s1。
+　　编程可用素材：printf("Please input string1:")...、printf("Please input string2:")...、printf("Output:\nstring1:...\n"...。
+　　程序的运行效果应类似地如图1所示，其中的123456789和abcdefghijk是从键盘输入的内容。
+
+#include <stdio.h>
+#include <string.h>
+
+int main(void)
+{
+	int i, k;
+	char s1[128], s2[128], s3[256] = {'\0'};
+
+	printf("Please input string1:");
+	gets(s1);
+	printf("Please input string2:");
+	gets(s2);
+	for (i = 0, k = 0; s1[i] != '\0'&&s2[i] != '\0'; i++)
+	{
+		s3[k] = s1[i];
+		k++;
+		s3[k] = s2[i];
+		k++;
+	}
+
+	if (s1[i] == '\0')
+	{
+		strcat(s3, &s2[i]);
+	}
+	else 
+	{
+		strcat(s3, &s1[i]);
+	}
+
+	printf("Output:\nstring1:%s\n", s3);
+
+	return 0;
+}

@@ -1,0 +1,55 @@
+①程序运行时先显示Please input numbers:，再从键盘上读入一组整数(只考虑int型)，数与数之间只使用空格或回车作分隔。数可正可负，最多10000个，但若读入的数为-222时，则表示输入结束且-222不算在该组数内。
+　　②对这一组数按从小到大的顺序进行排序。
+　　③将排序后的这一组数输出到屏幕上，输出格式为每行6个数，数与数之间使用逗号(,)分隔，两个逗号之间的宽度(不算逗号)为6且使用左对齐格式。注意，行尾没有逗号。
+
+#include <stdio.h>
+
+int main(void)
+{
+	int i, j, cnt, temp;
+	int array[10000];
+
+	printf("Please input numbers:");
+	for (i = 0; i < 10000; i++)
+	{
+		scanf("%d", &array[i]);
+		if (array[i] == -222)
+		{
+			break;
+		}
+	}
+	cnt = i;
+
+	for (i = 0; i < cnt; i++)
+	{
+		for (j = 0; j < cnt - i - 1; j++)
+		{
+			if (array[j] > array[j + 1])
+			{
+				temp = array[j];
+				array[j] = array[j + 1];
+				array[j + 1] = temp;
+			}
+		}
+	}
+
+	printf("\nOutput:\n");
+	for (i = 0; i < cnt; i++)
+	{
+		if (i == cnt - 1)
+		{
+			printf("%-6d\n", array[i]);
+			break;
+		}
+		if ((i + 1) % 6 != 0)
+		{
+			printf("%-6d,", array[i]);
+		}
+		else if ((i + 1) % 6 == 0)
+		{
+			printf("%-6d", array[i]);
+			printf("\n");
+		}
+	}
+	return 0;
+}

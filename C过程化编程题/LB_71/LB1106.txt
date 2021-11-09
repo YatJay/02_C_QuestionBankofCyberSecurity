@@ -1,0 +1,15 @@
+　从键盘输入一日期，年月日之间以“-”分隔，并以同样的形式但以“/”作分隔符输出。
+　　程序的运行效果应类似地如图1所示，图1中的2009-12-9是从键盘输入的内容。
+
+#include <stdio.h>
+
+int main(void)
+{
+	int year, month, day;
+
+	printf("please input a data:");
+	scanf("%d-%d-%d", &year, &month, &day);
+	printf("Output:\n");
+	printf("the date is:%d/%d/%d\n", year, month, day);
+	return 0;
+}

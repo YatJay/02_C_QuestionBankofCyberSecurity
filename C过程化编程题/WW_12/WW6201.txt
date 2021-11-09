@@ -1,0 +1,40 @@
+通过键盘输入两整型变量a和b，然后定义俩指针变量p1和p2指向整型变量a和b，
+
+然后a和b之间相互比较，a若小于b，则调用函数swap，实现a和b两数交换，
+
+然后在按大小顺序输出。注意：只允许在/******start******/和/******end******/之间添加代码。
+
+运行结果如下：
+
+#include <stdio.h>
+
+/******start******/
+void swap(int *x,int *y);
+/******end******/
+
+int main()
+{
+	  int a,b;
+	  int*pointer_1,*pointer_2;
+	  printf("please enter a and b:");
+	  scanf("%d,%d",&a,&b);
+	  pointer_1=&a;
+	  pointer_2=&b;
+	  if(a<b) swap(pointer_1,pointer_2);
+	  printf("Output:\nmax=%d,min=%d\n",a,b);
+	  return 0;
+ }    
+
+/******start******/
+void swap(int *x,int *y)
+{
+int temp;
+if(*x<*y)
+{
+temp=*x;
+*x=*y;
+*y=temp;
+}
+}
+
+/******end******/

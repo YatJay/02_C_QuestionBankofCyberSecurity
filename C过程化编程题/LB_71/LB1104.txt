@@ -1,0 +1,17 @@
+输入一个小写英文字母，首先输出它及其ASCII码，然后输出其对应的大写字母及其ASCII码。编程可用素材：printf("Input a lowercase letter: ")...、printf("\n...(...)...。
+　　程序的运行效果应类似地如图1所示，图1中的y是从键盘输入的内容。
+
+#include <stdio.h>
+
+int main(void)
+{
+	char ch;
+
+	printf("Input a lowercase letter:");
+	ch = getchar();
+
+	printf("Output:\n");
+	printf("%c(%d)\n", ch, ch);
+	printf("%c(%d)\n", ch - 32, ch - 32);
+	return 0;
+}

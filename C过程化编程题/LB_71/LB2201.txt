@@ -1,0 +1,28 @@
+编写程序实现以下功能
+　　从键盘输入3个整数，输出绝对值最大的数。编程可用素材：printf("Input 3 numbers: ")...、printf("\nThe number with maximum absolute value is ....\n"...。
+　　程序的运行效果应类似地如图1所示，图1中的1,-362,300是从键盘输入的内容。
+
+#include <stdio.h>
+#include <math.h>
+
+int main(void)
+{
+	int number1, number2, number3, max;
+
+	printf("Input 3 numbers: ");
+	scanf("%d,%d,%d", &number1, &number2, &number3);
+	if (abs(number1) > abs(number2))
+	{
+		max = number1;
+	}
+	else
+	{
+		max = number2;
+	}
+	if (abs(max) < abs(number3))
+	{
+		max = number3;
+	}
+	printf("Output:\nThe number with maximum absolute value is %d.\n", max);
+	return 0;
+}

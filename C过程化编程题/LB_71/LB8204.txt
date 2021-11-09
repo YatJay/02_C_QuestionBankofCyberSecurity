@@ -1,0 +1,64 @@
+按要求写前n个数据到文本文件lb8204.txt，然后从该文件读数据并显示。
+
+写入的数据是1到1000中是7的倍数或者是数字中含7的数（如：37，71，72等）。
+
+图中80是键盘输入的，每个数占4个宽度，每10个数换一行。
+
+注：只允许在/******start******/和/******end******/之间添加代码。
+
+#include <stdio.h>
+#include <stdlib.h>
+
+void save(int n);
+void out(int n);
+
+int main(void)
+{
+	int n;
+	printf("Input n:");
+	scanf("%d", &n);
+	save(n);
+	out(n);
+	return 0;
+}
+
+void save(int n)
+{
+	/******start******/
+int i,j=0;
+FILE *fp;
+fp = fopen("lb8204.txt", "w+");
+for(i=1; i<1001; i++)
+{
+  if(((i%7)==0)||((i%10)==7)||(((i/10)%10)==7) || (((i/100)%10)==7))
+  {
+    fprintf(fp,"%4d", i);
+    j++;
+    if(j==n) 
+	 break;
+    if((j%10)==0) 
+	 fprintf(fp, "\n");
+  }
+}
+fclose(fp);
+		/******end******/
+}
+
+void out(int n)
+{
+	char str[48];
+	FILE *fp;
+	fp = fopen("lb8204.txt", "r");
+	if (fp == NULL)
+	{
+		exit(0);
+	}
+	printf("Output:\n");
+	while (!feof(fp))
+	{
+		fgets(str, 44, fp);
+		printf("%s", str);
+	}
+	printf("\n");
+	fclose(fp);
+}

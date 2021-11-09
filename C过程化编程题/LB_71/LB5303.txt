@@ -1,0 +1,73 @@
+从键盘上读入一行字符(约定：字符数≤127字节)，判断其中的注释是否合法，不合法则报错，合法时则删除注释后再输出。合法注释是指“/*”标记注释开始、“*/”标记注释结束，通常表现为/* ……*/。
+　　注意事项：
+　　(1)只考虑行内最多只包含一个注释的情况。
+　　(2)不合法的注释情况有很多种，例如 ……*/缺注释开始标记、/  * ……*/缺注释开始标记、/* ……缺注释结束标记、/* ……*  /缺结束标记。
+　　(3)编程可用素材：printf("input a string:")...、printf("Output:\nThe result is :")...、printf("Output:\ncomment is error\n")...。
+　　程序的运行效果应类似地如图1、图2、图3和图4所示，图1中的int main(void){char ch;/*ding yi*/ int i}、图2中的int main(void){char ch;ding yi*/ int i}、图3中的int main(void){char ch;/*ding yi* / int i}和图4中的int main(void){char ch; int i}是从键盘输入的内容。
+
+程序运行效果示例：
+
+
+#include <stdio.h>
+#include <string.h>
+
+int findfirst(char str[128]);
+int findlast(char str[128]);
+
+int main(void)
+{
+	int first, last;
+	char string[128];
+	char result[128];
+
+	printf("input a string:");
+	gets(string);
+
+	first = findfirst(string);
+	last = findlast(string);
+
+	strcpy(result, string);
+	if (first >= 0 && last >= 0)
+	{
+		strcpy(result + first, string + last);
+	}
+
+	if (first >= 0 && last >= 0 && last >= first + 4 || first == -1 && last == -1)
+	{
+		printf("Output:\nThe result is :");
+		puts(result);
+	}
+	else
+	{
+		printf("Output:\ncomment is error\n");
+	}
+	return 0;
+}
+
+int findfirst(char str[128])
+{
+	int i;
+
+	for (i = 0; str[i] != '\0'; i++)
+	{
+		if (str[i] == '/' && str[i + 1] == '*')
+		{
+			return i;
+		}
+	}
+	return  (-1);
+}
+
+int findlast(char str[128])
+{
+	int i;
+
+	for (i = 0; str[i] != '\0'; i++)
+	{
+		if (str[i] == '*' && str[i + 1] == '/')
+		{
+			return i + 2;
+		}
+	}
+	return (-1);
+}

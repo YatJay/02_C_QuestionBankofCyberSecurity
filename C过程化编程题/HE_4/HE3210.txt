@@ -1,0 +1,46 @@
+把一个n * (2n-1) 的区域里除掏空成为一个镂空的三角形，减轻重量，但关键是为了追求另一种视觉效果。在设计的过程中，需要给出各种花纹的材料和大小尺寸的三角形样板，通过电脑临时做出来，以便看看效果。
+
+输入格式每行包含一个字符和一个整数n(3<=n<=35)，不同的字符表示不同的花纹，整数n表示等腰三角形的高。显然其底边长为2n-1。
+
+输出如图：(在其它镂空的地方以空格代替)
+
+#include<stdio.h>
+
+int main()
+{
+        int n,i,j;
+        char c;
+		printf("Please input char and n: ");
+		c=getchar();
+		scanf("%d",&n);
+		printf("Output:\n");;
+		for(i=0;i<n-1;i++)
+		{
+			for(j=0;j<2*n-1;j++)
+			{
+				
+				if(i+j==n-1)
+				{
+					printf("%c",c);
+				}
+				else if(j-i==n-1)
+				{
+					printf("%c",c);
+				}
+				else
+				{
+					printf(" ");
+				}
+				
+			
+			}
+			
+			putchar(10);
+		}
+		for(j=0;j<2*n-1;j++)
+		{
+			printf("%c",c);
+		}
+		putchar(10);
+        return 0;
+}

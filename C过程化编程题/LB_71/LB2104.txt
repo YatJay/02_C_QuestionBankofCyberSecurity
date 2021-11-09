@@ -1,0 +1,23 @@
+判断输入的正整数是否既是5又是7的整倍数，若是，则输出“Yes.”；否则输出“No.”。
+　　程序的运行效果应类似地如图1和图2所示，图1中的75和图2中的105是从键盘输入的内容。
+
+#include <stdio.h>
+
+int main(void)
+{
+	int n;
+
+	printf("Please input an integer:");
+	scanf("%d", &n);
+	printf("Output:\n");
+	if (n % 35 == 0)
+	{
+		printf("Yes.\n");
+	}
+	else
+	{
+		printf("No.\n");
+	}
+
+	return 0;
+}

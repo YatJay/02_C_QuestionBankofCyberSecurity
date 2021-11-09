@@ -1,0 +1,72 @@
+建立链表程序。当输入0时表示链表输入结束，0不计入该链表。注意：只允许在/******start******/和/******end******/之间添加代码。
+其中：
+1 2 3 4 5 0
+
+是键盘输入的。
+
+#include <stdio.h>
+#include <stdlib.h>
+
+struct node
+{
+	int data;
+	struct node *next;
+};
+
+struct node * create();
+void output(struct node *head);
+
+int main()
+{
+	struct node *head;
+
+	printf("Input:\n");
+	head = create();
+	printf("Output:\n");
+	output(head);
+	return 0;
+}
+
+struct node * create()
+{
+/******start******/
+int n=0;
+struct node *p,*a,*b;
+a=(struct node *)malloc(sizeof(struct node));
+scanf("%d",&a->data);
+if(a->data==0)
+p=NULL;
+else
+{
+while(a->data!=0)
+{
+	n++;
+	if(n==1)
+		p=a;
+	else
+		b->next=a;
+	b=a;
+	a=(struct node *)malloc(sizeof(struct node));
+	scanf("%d",&a->data);
+}
+b->next=NULL;
+}
+return p;
+
+/******end******/
+}
+
+void output(struct node *head)
+{
+	if (head == NULL)
+	{
+		printf("No data!\n");
+		return ;
+	}
+	while (head != NULL)
+	{
+		printf("%d ", head->data);
+		head = head->next;
+	}
+	printf("\n");
+}

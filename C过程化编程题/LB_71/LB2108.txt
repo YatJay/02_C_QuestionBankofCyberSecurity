@@ -1,0 +1,22 @@
+编写程序实现以下功能
+从键盘上输入两个实数，计算这两个实数的商（只计算前面的数除以后面的数）
+程序的运行效果应类似地如图1和图2所示，图1中的12 2.5和图2中的89.3 0是从键盘输入的内容。
+
+#include <stdio.h>
+
+int main(void)
+{
+	double number1, number2;
+	printf("Input 2 numbers: ");
+	scanf("%lf%lf", &number1, &number2);
+	printf("Output:\n");
+	if (number2 == 0)
+	{
+		printf("Divid by zero.");
+	}
+	else
+	{
+		printf("The result is: %.2f.", number1 / number2);
+	}
+	return 0;
+}

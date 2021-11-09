@@ -1,0 +1,11 @@
+程序功能：交换输出两数。注意：只修改/*********Found************/下面一行。
+
+1:  void swap(int *x, int *y);
+
+2: swap(&a, &b);
+
+3:  void swap(int *x, int *y)
+
+4:  tmpX = *x;
+
+5:  *y = tmpX;

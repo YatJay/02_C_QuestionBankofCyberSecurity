@@ -1,0 +1,15 @@
+输入两个整数，输出这两个整数的和（每个数占4位宽，+和=左右均无空格）。
+　　程序的运行效果应类似地如图1所示，图1中的3 4是从键盘输入的内容。
+
+#include <stdio.h>
+
+int main(void)
+{
+	int number1, number2;
+
+	printf("please input data: ");
+	scanf("%d%d", &number1, &number2);
+	printf("Output:\n");
+	printf("%4d+%4d=%4d\n", number1, number2, number1 + number2);
+	return 0;
+}

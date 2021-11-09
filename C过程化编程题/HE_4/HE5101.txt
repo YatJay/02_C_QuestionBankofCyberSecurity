@@ -1,0 +1,31 @@
+输出 1到n(12>=n>=1)的阶乘的值(要求利用静态局部变量相关的知识)。注意：只允许在/******start******/和/******end******/之间添加代码。
+
+#include<stdio.h>
+
+/******start******/
+int fun(n);
+/******end******/
+
+int main()
+{
+	int i,n;
+	printf("Please input n: ");
+	scanf("%d",&n);
+	printf("Output:\n");
+	for(i=1;i<=n;i++)
+	{
+		printf("%d!=%d\n",i,fun(i));
+	}
+	return 0;
+}
+
+/******start******/
+int fun(n)
+{
+int i,res=1;
+for(i=1;i<=n;i++)
+res*=i;
+return res;
+}
+
+/******end******/

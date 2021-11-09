@@ -1,0 +1,15 @@
+　已知某产品单价是30 ，输入其数量是num（整型），输出其总价（整型）。
+　　程序的运行效果应类似地如图1所示，图1中的8是从键盘输入的内容。
+
+#include <stdio.h>
+
+int main(void)
+{
+	int num;
+
+	printf("please input num:");
+	scanf("%d", &num);
+
+	printf("Output:\ntotal=%d\n", 30 * num);
+	return 0;
+}

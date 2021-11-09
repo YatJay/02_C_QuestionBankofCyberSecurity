@@ -1,0 +1,41 @@
+假如有一个字符串a，b，通过函数gets键盘输入字符串a，b，然后在屏幕输出字符串a，b。
+
+接着调用函数copy_string函数完成字符串a复制到字符串b，再在屏幕输出字符串a，b。
+
+要求：字符串a的大小不超过30个字符。函数copy_string的原型声明为：void copy_string(char from[ ],char to[ ])
+
+函数copy_string的功能为字符串from复制到字符串 to中，函数形参和实参都为数组名
+
+程序运行界面：
+
+#include <stdio.h>
+
+void copy_string(char from[], char to[]);
+
+int main()
+{
+	char a[31];
+	char b[31];
+	printf("Please input a string a is:");
+	gets(a);
+	printf("Please input a string b is:");
+	gets(b);
+	printf("Output:\n");
+	printf("string a=%s\nstring b=%s\n",a,b);  
+	printf("copy string a to string b:");
+	/******start******/
+copy_string(a,b);
+	/******end******/
+	printf("\nstring a=%s\nstring b=%s\n",a,b);  
+	return 0;
+}
+
+void copy_string(char from[], char to[])
+{
+	/******start******/
+int i;
+for(i=0;from[i]!='\0';i++)
+to[i]=from[i];
+to[i]='\0';
+	/******end******/
+}   

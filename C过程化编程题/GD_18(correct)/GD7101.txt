@@ -1,0 +1,7 @@
+程序功能：输入输出结构体数据。注意：只修改/*********Found************/下面一行。
+
+1:  } worker2;
+
+2:  scanf("%d %s %c", &worker2.num, worker2.name, &worker2.sex);
+
+3:  printf("worker's info: num=%d name=%s sex=%c ", worker2.num, worker2.name, worker2.sex);

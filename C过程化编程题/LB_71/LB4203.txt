@@ -1,0 +1,37 @@
+从键盘上读入一行字符(约定：字符数≤127字节)，按以下方法将其加密变换：
+　　　　A->Z   　a->z
+　　　　B->Y   　b->y
+　　　　C->X   　c->x
+　　　　……   　……
+　　　　Z->A   　z->a
+　　即字母A变成Z、字母B变成Y...，非字母字符不变。最后在屏幕上先显示这一行字符的长度，再显示生成的密文。
+　　编程可用素材：printf("Please input string:")...、printf("Output:\nzi fu chuan chang du:...、printf("\nmi wen:...。
+　　程序的运行效果应类似地如图1所示，图1中的sfasfk,lmw4tywerysfcvasgewr xfasftg是从键盘输入的内容
+
+#include <stdio.h>
+
+int main(void)
+{
+	int i;
+	char string[128];
+
+	printf("Please input string:");
+	gets(string);
+
+	for (i = 0; string[i] != '\0'; i++)
+	{
+		if (string[i] >= 'a' && string[i] <= 'z')
+		{
+			string[i] = 'a' + 25 - (string[i] - 'a');
+		}
+		if (string[i] >= 'A' && string[i] <= 'Z')
+		{
+			string[i] = 'A' + 25 - (string[i] - 'A');
+		}
+	}
+	
+	printf("Output:\nzi fu chuan chang du:%d", i);
+	printf("\nmi wen:%s\n", string);
+
+	return 0;
+}

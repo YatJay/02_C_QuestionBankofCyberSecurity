@@ -1,0 +1,41 @@
+编写一程序P214.C实现以下功能
+　　根据输入的n(约定n>0)在屏幕上显示对应的图案。
+
+　　程序的运行效果应类似地如图1和图2所示，图1中的3和图2中的5是从键盘输入的内容。
+
+#include <stdio.h>
+
+int main(void)
+{
+	int i, j, n;
+
+	printf("Please input n: ");
+	scanf("%d", &n);
+	printf("\noutput:\n");
+  	for (i = 1; i <= n; i++)
+	{
+		if (i == n)
+		{
+			printf("$\n");
+			continue;
+		}
+		printf("$");
+		for (j = 1; j <= (n - i) - 1; j++)
+		{
+			printf(" ");
+		}
+		printf("$");
+		printf("\n");
+	}
+	for (i = 1; i <= n - 1 ; i++)
+	{
+		printf("$");
+		for (j = 1; j <= i - 1; j++)
+		{
+			printf(" ");
+		}
+		printf("$");
+		printf("\n");
+	}
+	return 0;
+}

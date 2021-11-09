@@ -1,0 +1,43 @@
+ 写一个求二次方程ax2+bx+c根的函数。在主函数中首先由键盘输入a、b、c，然后调用求根的函数resolve()求方程的根并输出。需注意b2-4ac大于、等于或小于0的情况。
+
+程序代码中只允许在/*****start*****/和/*****end*****/之间填写代码，其余部分代码不能修改。输入输出使用：printf("input a b c: "), printf("output:\n"),printf("%.2f %.2f\n", ...)，等。
+
+程序运行的结果如下图：
+
+#include <stdio.h>
+#include <math.h>
+
+/******start******/
+void resolve(double a,double b,double c);
+/******end******/
+
+int main()
+{
+	double a, b, c=0;
+	printf("input a b c: ");
+	scanf("%lf%lf%lf", &a, &b, &c);
+
+	resolve(a, b, c);
+
+	return 0;
+}
+
+/******start******/
+void resolve(double a,double b,double c)
+{
+	double q,m,n;
+	q=b*b-4*a*c;
+	printf("output:\n");
+	if(q<0)
+		printf("无实数根\n");
+	else if(q==0)
+		printf("%.2f\n",-b/(2*a));
+	else
+	{
+		m=(-b+sqrt(q))/(2*a);
+	    n=(-b-sqrt(q))/(2*a);
+		printf("%.2f %.2f\n",m,n);
+	}
+}
+
+/******end******/

@@ -1,0 +1,32 @@
+　　x(x只考虑整数int且必须定义为int、但F(x)完全可能超过int的表示范围)通过键盘输入(输入前给出提示Please input x:)，然后计算并在屏幕上输出函数值。编程可用素材：printf("Please input x: ")...、printf("\nF(...) = ..."...。
+　　　　　┌　-5x+27   (x<0)
+　　F(x)= ├　7909     (x=0)
+　　　　　└　2x-1     (x>0)
+　　程序的运行效果应类似地如图1所示，图1中的3是从键盘输入的内容。
+
+#include <stdio.h>
+
+int main(void)
+{
+	int x;
+	double y;
+
+	printf("Please input x:");
+	scanf("%d", &x);
+	if (x < 0)
+	{
+		y = -5.0* x + 27;
+	}
+	else if (x == 0)
+	{
+		y = 7909;
+	}
+	else
+	{
+		y = 2.0 * x - 1;
+	}
+	printf("Output:\n");
+	printf("F(%d) = %.0f\n", x, y);
+
+	return 0;
+}

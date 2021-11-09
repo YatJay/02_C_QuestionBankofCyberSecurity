@@ -1,0 +1,28 @@
+有文本文件lb8102.txt存储类点阵数字字库（每个数字8行5列）。从键盘输入n（0-9），输出该数字。
+
+图中6是键盘输入的。
+
+#include <stdio.h>
+
+int main(void)
+{
+	int i, n;
+	char str[12];
+	FILE *fp;
+	fp = fopen("lb8102.txt", "r");
+
+	printf("Input n:");
+	scanf("%d", &n);
+	printf("Output:\n");
+
+	for (i = 0; i < n*8;i++)
+	{
+		fgets(str, 11, fp);
+	}
+	for (i = 0; i < 8; i++)
+	{
+		fgets(str, 11, fp);
+		printf("%s", str);
+	}
+	return 0;
+}

@@ -1,0 +1,23 @@
+编写一程序实现以下功能
+　　设某企业2006年的产值为5000万，计划以后每年的增长率为x(x从键盘输入，例如输入8.75表示8.75%)，计算该企业的产值在哪年实现翻番以及翻番时的产值，然后输出(输出时以万为单位，应考虑有小数)。编程可用素材：printf("Please input x: ")...、printf("\nyear = ... nian, chanzhi = ...\n"...。
+　　程序的运行效果应类似地如图1所示，图1中的50.6是从键盘输入的内容。
+
+#include <stdio.h>
+
+int main(void)
+{
+	int i, n = 2006;
+	double x;
+	double chanzhi = 5000;
+
+	printf("Please input x:");
+	scanf("%lf", &x);
+	for (i = 0; chanzhi < 10000; i++)
+	{
+		chanzhi = chanzhi * (1 + x / 100);
+	}
+	printf("Output:");
+	printf("\nyear = %d nian, chanzhi = %.2f\n", n + i, chanzhi);
+
+	return 0;
+}

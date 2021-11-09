@@ -1,0 +1,23 @@
+输入x,y两个整数，输出其中较大的数。
+　　程序的运行效果应类似地如图1所示，图1中的7,8是从键盘输入的内容。
+
+#include <stdio.h>
+
+int main(void)
+{
+	int number1, number2, max;
+
+	printf("please input x,y:");
+	scanf("%d,%d", &number1, &number2);
+	
+	if (number1 > number2)
+	{
+		max = number1;
+	}
+	else
+	{
+		max = number2;
+	}
+	printf("Output:\n%d is bigger\n", max);
+	return 0;
+}

@@ -1,0 +1,84 @@
+设有10名歌手(编号为1-10)参加歌咏比赛，另有6名评委打分，每位歌手的得分从键盘输入：先提示“Please input singer's score: ”，再依次输入第1个歌手的6位评委打分(10分制，分数为整型，分数之间使用空格分隔)，第2个歌手的6位评委打分...以此类推。计算出每位歌手的最终得分(扣除一个最高分和一个最低分后的平均分，最终得分保留2位小数)，最后按最终得分由高到低的顺序输出每位歌手的编号及最终得分
+
+#include <stdio.h>
+
+typedef struct _singer
+{
+	int number;
+	int score[6];
+	float average;
+} singer;
+
+int main(void)
+{
+	int i, j, sum, min, max;
+	singer temp;
+	singer people[10];
+
+	for (i = 0; i < 10; i++)
+	{
+		people[i].number = i + 1;
+	}
+
+	printf("Please input singer's score: ");
+	for (i = 0; i < 10; i++)
+	{
+		for (j = 0; j < 6; j++)
+		{
+			scanf("%d", &people[i].score[j]);
+			
+			if(people[i].score[j] > 10 || people[i].score[j] < 0)
+			{
+				printf("output:\n成绩必须为10分制:\n");
+				return 0;
+			}
+		}
+	}
+
+	//排序
+	for (i = 0; i < 10; i++)
+	{
+		sum = 0;
+		min = max = people[i].score[0];
+		for (j = 0; j < 6; j++)
+		{
+			if (min > people[i].score[j])
+			{
+				min = people[i].score[j];
+			}
+			if (max < people[i].score[j])
+			{
+				max = people[i].score[j];
+			}
+
+			//计算总成绩
+			sum = sum + people[i].score[j];
+		}
+
+		people[i].average = (float)((sum - min - max) / 4.0);
+	}
+
+	//求平均成绩
+	for (i = 0; i < 10; i++)
+	{
+		for (j = 0; j < 10 - i - 1; j++)
+		{
+			if (people[j].average < people[j + 1].average)
+			{
+				temp = people[j];
+				people[j] = people[j + 1];
+				people[j + 1] = temp;
+			}
+		}
+	}
+
+
+	//成绩输出
+	printf("output:\nscores:\n");
+	for (i = 0; i < 10; i++)
+	{
+		printf("No.%d:%.2f\n", people[i].number, people[i].average);
+	}
+
+	return 0;
+}

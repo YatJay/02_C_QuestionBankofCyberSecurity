@@ -1,0 +1,27 @@
+编写程序实现以下功能
+　　用键盘输入的整数产生5*5矩阵N，并按行输出该矩阵，每个元素占4个数位、右对齐。
+　　程序的运行效果应类似地如图1和图2所示，图1中的5和图2中的7是从键盘输入的内容。
+
+#include <stdio.h>
+
+int main(void)
+{
+	int n, i, j;
+	int array[5][5];
+
+	printf("Please input an integer:");
+	scanf("%d", &n);
+
+	printf("Output:\n");
+	for (i = 0; i < 5; i++)
+	{
+		for (j = 0; j < 5; j++)
+		{
+			array[i][j] = n + i + j;
+			printf("%4d", array[i][j]);
+		}
+		printf("\n");
+	}
+
+	return 0;
+}

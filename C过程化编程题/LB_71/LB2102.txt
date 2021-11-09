@@ -1,0 +1,48 @@
+输入月份，打印2003年该月有几天。当输入的月份超范围时，应显示“Invalid month input”。编程可用素材：printf("please input the month number:")...、printf("\nInvalid month input !\n")...、printf("\n 2003.... has ... days.\n"...。
+　　程序的运行效果应类似地如图1和图2所示，图1中的4和图2中的13是从键盘输入的内容
+
+#include <stdio.h>
+
+int main(void)
+{
+	int month, day;
+	
+	printf("please input the month number:");
+	scanf("%d", &month);
+
+	switch (month)
+	{
+		case 1:
+		case 3:
+		case 5:
+		case 7:
+		case 8:
+		case 10:
+		case 12:
+			day = 31;
+			break;
+		case 4:
+		case 6:
+		case 9:
+		case 11:
+			day = 30;
+			break;
+		case 2:
+			day = 28;
+			break;
+		default:
+			day = 0;
+			break;
+	}
+
+	printf("Output:\n");
+	if (day == 0)
+	{
+		printf("Invalid month input !\n");
+	}
+	else
+	{
+		printf("2003.%d has %d days.\n", month, day);
+	}
+	return 0;
+}

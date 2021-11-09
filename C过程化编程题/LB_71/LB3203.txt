@@ -1,0 +1,35 @@
+程序输入：第一行是一个正整数n(约定1<=n<=1000)，表示一共有n个点。接下来的n行，每行2个整数，分别表示每个点的横坐标和纵坐标。
+　　程序输出：输出横坐标最小的那个点的横坐标和纵坐标，如果横坐标最小的点有多个，则只输出其中纵坐标最小的那个点。
+　　程序的运行效果应类似地如图1所示，图1中的5、5 2、2 3、2 4、3 2和4 1是从键盘输入内容。
+
+#include <stdio.h>
+
+int main(void)
+{
+	int i, n;
+	int x, y;
+	int minx, miny;
+
+	printf("Input:\n");
+	scanf("%d", &n);
+
+	scanf("%d%d", &minx, &miny);
+
+	for (i = 1; i < n; i++)
+	{
+		scanf("%d%d", &x, &y);
+		if (minx > x)
+		{
+			minx = x;
+			miny = y;
+		}
+		else if (minx == x && miny > y)
+		{
+			minx = x;
+			miny = y;
+		}
+	}
+
+	printf("Output: %d %d\n", minx, miny);
+	return 0;
+}

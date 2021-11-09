@@ -1,0 +1,40 @@
+完成以下代码中的函数声明和定义。该函数用于将字符串反序，如"abc"反序为"cba"。
+
+注意：只允许在/******start******/和/******end******/之间添加代码。
+
+#include <stdio.h>
+#include <string.h>
+
+/******start******/
+int ReverseString(char *p);
+/******end******/
+
+int main()
+{
+	char str[200]={0};
+	printf("input a string: ");
+	gets(str);
+
+	ReverseString(str);
+
+	puts("output:");
+	puts(str);
+
+	return 0;
+}
+
+/******start******/
+int ReverseString(char *p)
+{
+	int i,j=0;char b[200];
+	for(i=0;*(p+i)!='\0';i++)
+		b[i]=*(p+i);
+	for(i=i-1;i>=0;i--)
+	{
+		*(p+j)=b[i];
+		j++;
+	}
+	return *p;
+}
+
+/******end******/

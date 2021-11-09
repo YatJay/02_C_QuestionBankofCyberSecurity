@@ -1,0 +1,22 @@
+从键盘输入1～9之间的一个数，根据输入的数，打印下三角乘法口诀表。要求积的输出占3个宽度，且左对齐。编程可用素材：printf("input a number(1~9): ")...。
+　　程序的运行效果应类似地如图1和图2所示，图1中的3和图2中的7是从键盘输入的内容
+
+#include <stdio.h>
+
+int main(void)
+{
+	int i, j, n;
+
+	printf("input a number(1~9):");
+	scanf("%d", &n);
+	printf("Output:\n");
+	for (i = 1; i <= n; i++)
+	{
+		for (j = 1; j <= i; j++)
+		{
+			printf("%d*%d=%-3d", i, j, i * j);
+		}
+		printf("\n");
+	}
+	return 0;
+}

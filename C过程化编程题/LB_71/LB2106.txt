@@ -1,0 +1,23 @@
+输入两个整数，如果相等输出Yes. ,否则输出No.。
+　　程序的运行效果应类似地如图1所示，图1中的5 6是从键盘输入的内容。
+
+#include <stdio.h>
+
+int main(void)
+{
+	int number1, number2;
+
+	printf("please input x y:");
+	scanf("%d %d", &number1, &number2);
+	printf("Output:");
+	if (number1 == number2)
+	{
+		printf("Yes.");
+	}
+	else
+	{
+		printf("No.");
+	}
+	printf("\n");
+	return 0;
+}

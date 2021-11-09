@@ -1,0 +1,26 @@
+文本文件lb8101.txt中存放了50个整数。从键盘输入n值，求该文件中后n个数的和。
+
+图中13是键盘输入的。
+
+#include <stdio.h>
+
+int main(void)
+{
+	int i, n, sum = 0;
+	int arr[50];
+	FILE *fp;
+	fp = fopen("lb8101.txt", "r");
+
+	printf("Input n:");
+	scanf("%d", &n);
+	for (i = 0; i < 50; i++)
+	{
+		fscanf(fp, "%d", &arr[i]);
+	}
+	for (i = 50-n; i < 50; i++)
+	{
+		sum += arr[i];
+	}
+	printf("Output:\n%d\n", sum);
+	return 0;
+}

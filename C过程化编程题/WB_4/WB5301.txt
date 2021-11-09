@@ -1,0 +1,39 @@
+用递归的方法输出Hanoi（汉诺）塔问题的解决步骤。汉诺塔问题描述如下：
+古代有一个梵塔，塔内有3个座A、B、C。初始时A座上有n个盘子，盘子大小不等，大的在下，小的在上。有一个老和尚想把这n个盘子从A座移动到C座，但是每次只允许移动一个盘子，而且在移动过程中在3个座上需要始终保持大盘在下，小盘在上，在移动过程中可以使用B座。
+要求使用递归的方法模拟并输出移动的步骤。 
+
+ 
+
+输入格式 
+
+一个正整数n
+
+ 
+
+输出 
+
+解决n个盘子的汉诺塔问题的步骤。
+每一步一行，在这一行中输出将盘子从一个座移动至另一个的过程。例如移动A座顶部的盘子至C座，则输出A->C。
+请注意行尾输出换行。 
+
+#include <stdio.h>
+void move(char x, char y) {
+        printf("%c->%c\n", x, y);
+}
+void hanoi(int n, char a, char b, char c) {
+        if (n == 1) {
+                move(a, c);
+        } else {
+                hanoi(n - 1, a, c, b);
+                move(a, c);
+                hanoi(n - 1, b, a, c);
+        }
+}
+int main() {
+        int n;
+		printf("Please input n:\n");
+        scanf("%d", &n);
+		printf("Output:\n");
+        hanoi(n, 'A', 'B', 'C');
+        return 0;
+}

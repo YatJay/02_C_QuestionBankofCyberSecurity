@@ -1,0 +1,89 @@
+计算两个日期之间的天数。注：判断年份是否为闰年的方法——为400的倍数为闰年，如2000年；若非100的倍数，而是4的倍数，为闰年，如1996年。编程可用素材：printf("from the date (****/**/**):\n")...、printf("to the date(****/**/**):\n")、printf("Output:\nsum=%d\n"...。
+　　程序的运行效果应类似地如图1和图2所示，图1中的2008/02/13、2010/04/24和图2中的2010/04/24、2008/02/13是从键盘输入的内容。
+
+#include <stdio.h>
+	
+int runyear(int year);
+int days(int year, int month, int day);
+
+
+int main(void)
+{
+	int i, sum = 0;
+	int year2, month2, day2;
+	int year1, month1, day1;
+	int temp;
+
+	printf("from the date (****/**/**):\n");
+	scanf("%d/%d/%d", &year2, &month2, &day2);
+	printf("to the date(****/**/**):\n");
+	scanf("%d/%d/%d", &year1, &month1, &day1);
+	if (year1 > year2 || (year1 == year2 && month1 > month2)
+		|| (year1 == year2 && month1 == month2 && day1 > day2))
+	{
+		temp = year1;
+		year1 = year2;
+		year2 = temp;
+		temp = month1;
+		month1 = month2;
+		month2 = temp;
+		temp = day1;
+		day1 = day2;
+		day2 = temp;		
+	}
+
+	for (i = year1 ; i < year2; i++)
+	{
+		if (i == year1)
+		{
+			if (month1 <=2 && runyear(i) == 1)
+			{
+				sum = sum + 366;
+			}
+			else
+			{
+				sum = sum + 365;
+			}
+			continue;
+		}
+		if (runyear(i) == 1)
+		{
+			sum = sum + 366;
+			continue;
+		}
+		sum = sum + 365;
+	}
+
+	sum = sum - days(year2, month1, day1) + days(year2, month2, day2);
+	printf("Output:\nsum=%d\n", sum);
+	return 0;
+}
+
+int runyear(int year)
+{
+	if (year % 400 == 0 || (year % 100 != 0 && year % 4 == 0))
+	{
+		return (1);
+	}
+	else
+	{
+		return (0);
+	}
+}
+
+int days(int year, int month, int day)
+{
+	int j, m = 0;
+	int array[13] = {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+
+	for (j = 1; j < month; j++)
+	{
+		m = m + array[j];
+	}
+	m = m + day;
+	if (runyear(year) == 1 && month > 2)
+	{
+		m++;
+	}
+	return (m);
+}

@@ -1,0 +1,28 @@
+假设有一个数组a，整型，有5个元素，通过键盘输入数组各元素，要输出数组各元素的值。
+
+注意：只允许在/******start******/和/******end******/之间添加代码。
+程序运行界面
+
+
+#include <stdio.h>
+
+int main()
+{
+	int a[5];
+	int *p,i;
+	printf("please enter 5 integer numbers:");
+	for(i=0;i<5;i++)
+	{
+		scanf("%d",&a[i]);
+	}
+	printf("Output:\n");
+	/******start******/
+	for(p=a;p<(a+5);p++)
+
+	/******end******/
+	{
+		printf("%d ",*p);
+	}
+	printf("\n");
+	return 0;
+}

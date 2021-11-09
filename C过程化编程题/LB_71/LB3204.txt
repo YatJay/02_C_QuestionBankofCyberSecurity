@@ -1,0 +1,41 @@
+编写一程序实现以下功能
+　　从键盘输入一个一百分制成绩，如果不在0～100范围内，则要求重新输入数据，直到输入的数据在0～100范围内。将输入的数据转换成等级‘A’，‘B’，‘C’，‘D’，‘E’。90分以上为‘A’，80～89分为‘B’，70～79分为‘C’，60～69分为‘D’，60分以下为‘E’，要求使用switch、case、default语句，结果赋值给变量grade，并将变量grade的值输出到屏幕上。编程可用素材：printf("please input the score(0-100): ")...、printf("score=...,grade=...\n",...。
+　　程序的运行效果应类似地如图1所示，图1中的103和55.3是从键盘输入的内容。
+
+#include <stdio.h>
+
+int main(void)
+{
+	float score;
+	char grade;
+
+	printf("please input the score(0-100):");
+	scanf("%f", &score);
+	printf("Output:\n");
+	while (score < 0 || score > 100)
+	{
+		printf("please input the score(0-100):");
+		scanf("%f", &score);
+	}
+	switch ((int)score / 10)
+	{
+		case 10:
+		case 9:
+			grade = 'A';
+			break;
+		case 8:
+			grade = 'B';
+			break;
+		case 7:
+			grade = 'C';
+			break;
+		case 6:
+			grade = 'D';
+			break;
+		default:
+			grade = 'E';
+			break;
+	}
+	printf("score=%.1f,grade=%c\n", score, grade);
+	return 0;
+}

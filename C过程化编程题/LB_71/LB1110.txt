@@ -1,0 +1,15 @@
+从键盘上输入一个四位整数，计算各个位上的数字之和。编程可用素材：printf("Input a number with 4-digit: ")...、printf("Output:\nsum=...\n"...。
+　　程序的运行效果应类似地如图1所示，图1中的1234是从键盘输入的内容。
+
+#include <stdio.h>
+
+int main(void)
+{
+	int number;
+
+	printf("Input a number with 4-digit: ");
+	scanf("%d", &number);
+	printf("Output:\n");
+	printf("sum=%d\n", number / 1000 + number / 100 % 10 + number / 10 % 10 + number % 10);
+	return 0;
+}

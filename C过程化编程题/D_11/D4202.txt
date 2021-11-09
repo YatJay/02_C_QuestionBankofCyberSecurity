@@ -1,0 +1,25 @@
+从键盘读入一行字符(约定：字符数≤127字节)，将其中的数字字符以及这些数字字符的数量在屏幕上显示，注意：要求先显示这些数字字符的数量。编程可用素材：printf("Input:\nPlease input string:\n")...、printf("\nOutput:\nThe Digit Number is:...、printf("\nThe Digit Number is following:...。
+　　程序的运行效果应类似地如图1所示，图1中的this is a test!,ada12313 231 4*(*232 233是从键盘输入的内容。
+
+#include <stdio.h>
+void main()
+{
+	int i, j;
+	char string[128];
+
+	printf("Input:\nPlease input string:\n");
+	gets(string);
+
+	for (i = 0, j = 0; string[i] != '\0'; i++)
+	{
+		if (string[i] >= '0' && string[i] <= '9')
+		{
+			string[j] = string[i];
+			j++;
+		}
+	}
+	string[j] = '\0';
+	printf("\nOutput:\nThe Digit Number is:%d\n", j);
+	printf("\nThe Digit Number is following:%s\n", string);
+
+}

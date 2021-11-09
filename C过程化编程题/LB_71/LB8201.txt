@@ -1,0 +1,48 @@
+编写一程序实现以下功能
+　　有一存储很多商品数据(每件商品的属性先后包括：品名、规格、数量、单价，编程时相应的数据类型分别定义为字符串char(20)、字符串char(12)、long、float)的二进制文件sp.dat(即未作任何格式转换而直接使用fwrite将商品属性写入文件)，从键盘输入某种商品的品名，要求在文件中查找有无相应品名商品(可能有多条记录或没有)，若有则在屏幕上显示出相应的商品的品名、规格、数量、单价(显示时，品名、规格、数量、单价之间使用逗号(,)作分隔)，若无则显示没有相应品名的商品。
+　　编程可用素材：printf("Please input shang pin pin ming:")...、printf("Output:\ncha zhao qing kuang:\n")...、printf("mei you shang pin :...。
+　　程序的运行效果应类似地如图1和图2所示，图1中的Please input shang pin pin ming:xuebi中的xuebi和图2中的Please input shang pin pin ming:kele中的kele是从键盘输入的内容。
+#include <stdio.h>
+#include <string.h>
+
+struct good
+{
+	char name[20];
+	char type[12];
+	long number;
+	float price;
+};
+
+int main(void)
+{
+	int i = 0, n, flag;
+	char str[20];
+	struct good goods[100];
+	FILE *fp;
+
+	fp = fopen("sp.dat", "rb");
+	while (!feof(fp))
+	{
+		fread(&goods[i], sizeof(struct good), 1, fp);
+		i++;
+	}
+	n = i;
+	flag = 0;
+	printf("Please input shang pin pin ming:");
+	scanf("%s", str);
+	printf("Output:\ncha zhao qing kuang:\n");
+	for (i = 0; i < n; i++)
+	{
+		if (strcmp(goods[i].name, str)==0)
+		{
+			printf("%s,%s,%ld,%.2f\n", goods[i].name, goods[i].type,
+				goods[i].number, goods[i].price);
+			flag = 1;
+		}
+	}
+	if (flag == 0)
+	{
+		printf("mei you shang pin %s\n", str);
+	}
+	return 0;
+}

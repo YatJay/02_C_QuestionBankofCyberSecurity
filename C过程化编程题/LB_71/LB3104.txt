@@ -1,0 +1,27 @@
+　编写程序实现以下功能
+　　输入两个正整数m和n，求其最大公约数和最小公倍数。注：最大公约数也称最大公因子，指某几个整数共有因子中最大的一个；两个整数公有的倍数称为它们的公倍数，其中最小的一个正整数称为它们两个的最小公倍数。编程可用素材：printf("please input two integer numbers: ")...、printf("Output:\nthe greatest common divisor is ...\n"...、printf("the least common multiple is ...\n"...。
+　　程序的运行效果应类似地如图1所示，图1中的35 15是从键盘输入的内容。
+
+#include <stdio.h>
+
+int main(void)
+{
+	int number1, number2, rem, i, j;
+
+	printf("please input two integer numbers: ");
+	scanf("%d%d", &number1, &number2);
+	i = number1;
+	j = number2;
+	rem = number1 % number2;
+	while (rem != 0)
+	{
+		i = number2;
+		j = rem;
+		rem = i % j;
+	}
+	
+	printf("Output:\n");
+	printf("the greatest common divisor is %d\n", j);
+	printf("the least common multiple is %d\n", number1 * number2 / j);
+	return 0;
+}

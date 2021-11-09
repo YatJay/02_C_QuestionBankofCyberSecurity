@@ -1,0 +1,17 @@
+输出n行星号，每行5个*星号。程序的运行效果应类似地如图所示，图中的4是从键盘输入的内容。
+
+#include <stdio.h>
+
+int main(void)
+{
+	int n, i;
+
+	printf("please input n: ");
+	scanf("%d", &n);
+	printf("Output:\n");
+	for (i = 1; i <= n; i++)
+	{
+		printf("*****\n");
+	}
+	return 0;
+}

@@ -1,0 +1,117 @@
+编写一程序D1402.C实现以下功能
+　　程序运行时，先从键盘输入一个文本文件的文件名(约定：字符数≤127字节，可含路径)和一个字符串(约定：字符数≤20字节，其中不含空格、TAB等，后面称之为Str)，再在屏幕上显示该文件的内容。要求显示完内容后，在屏幕上输出文件的行数(行之间以’\n’为分隔、每行的长度不定但均≤200个字节)、字符串Str在文件中第1次出现的行号和最后一次出现的行号(查找时不区分大小写、不跨行查找，若未找到，则行号显示为-1)。注意，程序中不能使用库函数fgets或使用同名的变量、函数、单词，行的编号从1开始计。
+　　下载程序运行时测试用的文件Test.txt。编程可用素材：printf("input the file's name and the string: ")...、printf("\nfile open error!")...、printf("------------------------File content:----------------------\n")...、printf("\n------------------------File summary:----------------------\n")...、printf("... lines, first line: ..., last line: ...\n"...。
+　　程序的运行效果应类似地如图1所示，图1中的“input the file's name and the string: C:\Temp\Test.txt  Value”中的“C:\Temp\Test.txt  Value”是从键盘输入的内容(“C:\Temp\Test.txt”是文件名，“Value”是需查找的字符串)。图1中的“11 lines, first line: 6, last line: 11”表示文件一共有11行，字符串“Value”在文件中第一次出现的行号为6、最后一次出现的行号为11.
+
+
+#include <stdio.h>
+#include <stdlib.h>
+
+void readfile(char filename[128], char file[100][204], int *totalline);
+void findstr(char file[100][204], char str[24], int *firstline, int *lastline, int totalline);
+
+int main(void)
+{
+	int i;
+	int totalline, firstline, lastline;
+	char filename[128], str[24];
+	char file[100][204];
+	
+
+	printf("input the file's name and the string: ");
+	scanf("%s%s", filename, str);
+	
+	printf("Output:\n");
+	readfile(filename, file, &totalline);
+	printf("------------------------File content:----------------------\n");
+	for (i = 0; i < totalline; i++)
+	{
+		puts(file[i]);
+	}
+	printf("------------------------File summary:----------------------\n");
+
+	findstr(file, str, &firstline, &lastline, totalline);
+	printf("%d lines, first line: %d, last line: %d\n", totalline, firstline, lastline);	
+
+	return 0;
+}
+
+void readfile(char filename[128], char file[100][204], int *totalline)
+{
+	int i, j;
+	FILE *fp;
+
+	fp = fopen(filename, "r");
+	if (fp == NULL)
+	{
+		printf("\nfile open error!");
+		exit(0);
+	}
+	i = 0;
+	j = 0;
+	while (!feof(fp))
+	{
+		file[i][j] = fgetc(fp);
+		if (file[i][j] == '\n')
+		{
+			file[i][j] = '\0';
+			i++;
+			j = 0;
+			continue;
+		}
+		j++;
+	}
+	file[i][j - 1] = '\0';
+	*totalline = i + 1;
+	fclose(fp);
+}
+
+void findstr(char file[100][204], char str[24], int *firstline, int *lastline, int totalline)
+{
+	int i, j, k, flag = 0;
+
+	for (i = 0; i < totalline; i++)
+	{
+		for (j = 0; file[i][j] != '\0'; j++)
+		{
+			for (k = 0; str[k] != '\0'; k++)
+			{
+				if (str[k] >= 'a' && str[k] <= 'z')
+				{
+					if (file[i][j + k] != str[k] && file[i][j + k] != str[k] - 32)
+					{
+						break;
+					}
+				}
+				else if (str[k] >= 'A' && str[k] <= 'Z')
+				{
+					if (file[i][j + k] != str[k] && file[i][j + k] != str[k] + 32)
+					{
+						break;
+					}
+				}
+				else
+				{
+					if (file[i][j + k] != str[k])
+					{
+						break;
+					}
+				}
+			}
+			if (str[k] == '\0')
+			{
+				if (flag == 0)
+				{
+					*firstline = i + 1;
+					flag = 1;
+				}
+				*lastline = i + 1;
+			}
+		}
+	}
+	if (flag == 0)
+	{
+		*firstline = -1;
+		*lastline = -1;
+	}
+}
