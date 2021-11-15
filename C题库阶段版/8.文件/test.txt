@@ -1,0 +1,10 @@
+/*      stdlib.h
+        Definitions for common types, variables, and functions.
+        Copyright (c) Borland International 1987,1988
+        All Rights Reserved.
+*/
+char   *_Cdecl ltoa     (long vaLue, char *string, int radix);
+int     _Cdecl putenv   (const char *name);
+unsigned _Cdecl _rotl   (unsigned value, int count);
+unsigned _Cdecl _rotr   (unsigned value, int count);
+void
