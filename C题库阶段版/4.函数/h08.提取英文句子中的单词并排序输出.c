@@ -27,13 +27,7 @@ int main()
 int GetWords(char *str, char *words[])
 {
     /******start******/
-	int i,nwords=0;
-	for(i=0;*(str+i)!='.';i++){
-		if(*(str+i)==' '){
-			*words[nwords]=str+
-			nwords++;
-		}
-	}
+	
     /******end******/
 }
 void SortStrings(const char *strs[], int count)
