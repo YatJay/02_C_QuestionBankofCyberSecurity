@@ -7,32 +7,77 @@
 */
 #include <stdio.h>
 #include <string.h>
+
 int GetWords(char *sentence, char *words[]);
 void SortStrings(const char *strs[], int count);
+
 int main()
 {
-    char str[200];
-    int nWords = 0;
-    char *words[20];
-    int i;
-    printf("input a string: ");
-    gets(str);
-    nWords = GetWords(str, words);
-    SortStrings(words, nWords); /*此处题目有错误，如果还是填空题就不管它试试*/
-    puts("output:");
-    for (i = 0; i < nWords; i++)
-        puts(words[i]);
-    return 0;
+	char str[200];
+	int nWords = 0;
+	char *words[20];
+	int i;
+
+	printf("input a string: ");
+	gets(str);
+
+	nWords = GetWords(str, words);
+	SortStrings(words, nWords);
+
+	puts("output:");
+	for(i=0; i<nWords; i++)
+		puts(words[i]);
+
+	return 0;
 }
+
+
 int GetWords(char *str, char *words[])
 {
-    /******start******/
-	
-    /******end******/
+/******start******/
+int i, cnt = 0;
+	char ch = ' ';
+	for (i = 0; str[i] != '\0'; i++)
+	{
+		if (ch == ' ' && str[i] != ' ')//读取单词时候 
+		{
+			words[cnt] = str+i;
+			ch = str[i];//将此时读取到的字符赋值给ch,从而在下一个循环的时候进行判断 
+			cnt++;
+		}
+		else if (str[i] == ' ')//读取到空白字符的时候 
+		{
+			ch = str[i];
+			str[i] = '\0';
+		}
+		else if (str[i] == '.')//句子结束的时候 
+		{
+			str[i] = '\0';
+			break;
+		}
+		
+	}
+	return cnt;
+/******end******/
 }
+
 void SortStrings(const char *strs[], int count)
 {
-    /******start******/
-
-    /******end******/
+/******start******/
+int i, j;
+	const char *tmp;
+	for (i = 0; i < count; i++)
+	{
+		for (j = 0; j < count - i - 1; j++)
+		{
+			if (strcmp(strs[j], strs[j+1]) > 0)//当前面的单词大于后一个单词时,strcmp函数的返回值即为1 
+			{
+				tmp=strs[j];
+				strs[j]=strs[j+1];
+				strs[j+1]=tmp;
+			}
+		}
+	}
+/******end******/
 }
+

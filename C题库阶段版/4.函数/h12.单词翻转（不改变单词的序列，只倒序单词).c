@@ -13,8 +13,12 @@ int main(void){
     printf("\n%s",str);
     
     for(i=0;str[i]!='\n';i++){
-    	pstr=&str[i];
-    	
+    	if(i==0){
+    		
+		}
+		else if(str[i]==' '){
+			
+		}	
 	}
     printf("\n%s",str);
     return 0;
